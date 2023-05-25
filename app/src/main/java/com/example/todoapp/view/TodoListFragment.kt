@@ -42,7 +42,6 @@ class TodoListFragment : Fragment() {
             val action = TodoListFragmentDirections.ActionCreateTodo()
             Navigation.findNavController(it).navigate(action)
         }
-
         observeViewModel()
     }
 
