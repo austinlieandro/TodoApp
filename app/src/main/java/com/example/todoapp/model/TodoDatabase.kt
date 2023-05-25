@@ -33,6 +33,9 @@ abstract class TodoDatabase:RoomDatabase() {
             }
         }
 
+        suspend fun markTodoAsDone(todoId: Int) {
+            markTodoAsDone(todoId)
+        }
 
 //        operator fun invoke(context: Context): TodoDatabase {
 //            return instance ?: synchronized(LOCK) {

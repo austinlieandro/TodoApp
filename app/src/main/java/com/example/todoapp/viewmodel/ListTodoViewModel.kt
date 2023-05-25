@@ -33,7 +33,7 @@ class ListTodoViewModel(application: Application): AndroidViewModel(application)
                 getApplication(),
                 TodoDatabase::class.java, "newtododb").build()
 
-            todoLD.postValue(db.todoDao().selectAllTodo())
+            todoLD.postValue(db.todoDao().getUndoneTodos())
         }
     }
 
@@ -42,9 +42,19 @@ class ListTodoViewModel(application: Application): AndroidViewModel(application)
             val db = Room.databaseBuilder(
                 getApplication(),
                 TodoDatabase::class.java, "newtododb").build()
-            db.todoDao().updateTodoStatus(todo)
+            db.todoDao().deleteTodo(todo)
 
             todoLD.postValue(db.todoDao().selectAllTodo())
+        }
+    }
+    fun updateTask(todo: Todo) {
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                TodoDatabase::class.java, "newtododb").build()
+            db.todoDao().updateTodoStatus(todo)
+
+            todoLD.postValue(db.todoDao().getUndoneTodos())
         }
     }
 }

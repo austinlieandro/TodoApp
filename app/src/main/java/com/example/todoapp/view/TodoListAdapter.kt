@@ -31,7 +31,7 @@ class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick : (Todo) 
                     todo.isDone = 1
                     adapterOnClick(todo)
                 }
-                else{
+                if(!checktask.isChecked){
                     todo.isDone = 0
                 }
             }
