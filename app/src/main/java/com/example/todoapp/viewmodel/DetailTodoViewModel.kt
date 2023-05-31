@@ -19,13 +19,13 @@ class DetailTodoViewModel(application: Application):AndroidViewModel(application
     val todoLD = MutableLiveData<Todo>()
     val db = buildDb(getApplication())
 
-    fun addTodo(list: List<Todo>) {
+    fun addTodo(todo: Todo) {
         launch {
             val db = Room.databaseBuilder(
                 getApplication(), TodoDatabase::class.java,
                 "newtododb"
             ).build()
-            db.todoDao().insertAll(*list.toTypedArray())
+            db.todoDao().insertAll(todo)
         }
     }
 
