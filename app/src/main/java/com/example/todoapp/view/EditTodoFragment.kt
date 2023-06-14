@@ -56,7 +56,6 @@ class EditTodoFragment : Fragment(),TodoSaveChangesClick,  RadioClick {
 //            Toast.makeText(view.context, "Todo Update", Toast.LENGTH_SHORT).show()
 //            Navigation.findNavController(it).popBackStack()
 //        }
-
         val uuid = EditTodoFragmentArgs.fromBundle(requireArguments()).uuid
         viewModel.fetch(uuid)
         observeViewModel()
